@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TEAM LBC</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Global */
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(180deg, #0a0a0a, #1a1a1a);
+    font-family: 'Press Start 2P', monospace;
+    color: #fff;
+    overflow-x: hidden;
+    text-align: center;
+    user-select: none;
+}
+
+/* Header */
+h1.glow {
+    font-size: 2rem;
+    margin: 40px 10px 20px;
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ccff;
+    letter-spacing: 2px;
+    animation: glowPulseCyan 2s infinite alternate;
+}
+
+@keyframes glowPulseCyan {
+    from { text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff; }
+    to { text-shadow: 0 0 30px #00ffff, 0 0 60px #00ccff; }
+}
+
+/* Banner */
+#highlight-banner {
+    width: 100%;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #0f0f0f, #1b1b1b);
+    border-top: 3px solid #ff000066;
+    border-bottom: 3px solid #ff000066;
+    box-shadow: 0 0 30px #ff000033 inset;
+    margin-bottom: 40px;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Warp link */
+#warp-link {
+    font-size: 2.5rem;
+    color: #ff3b3b;
+    margin: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    animation: neonPulse 2s infinite alternate, flicker 5s infinite;
+    text-shadow: 
+        0 0 10px #ff0000,
+        0 0 20px #ff3333,
+        0 0 40px #ff3333,
+        0 0 60px #ff5555;
+}
+#warp-link:hover { transform: scale(1.05); }
+
+@keyframes neonPulse {
+    from { opacity: 0.85; text-shadow: 0 0 10px #ff0000, 0 0 30px #ff3333; }
+    to { opacity: 1; text-shadow: 0 0 20px #ff0000, 0 0 50px #ff5555; }
+}
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+    20%, 24%, 55% { opacity: 0.4; }
+}
+
+/* Layout */
+.rules-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 0 auto 40px;
+    max-width: 1200px;
+}
+
+.info-section {
+    background-color: #111;
+    border-top: 2px solid #00ffff33;
+    box-shadow: 0 0 15px #00ffff33;
+    border-radius: 10px;
+    padding: 20px;
+    flex: 1 1 300px;
+    max-width: 360px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: auto;
+}
+
+.info-section h2 {
+    color: #00ffff;
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Text */
+.info-section p {
+    font-size: 0.75rem;
+    color: #ccc;
+    line-height: 1.6;
+    white-space: pre-line;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+    text-align: left;
+    margin: 0;
+}
+
+/* Roulette colors */
+.red { color: #ff3b3b; text-shadow: 0 0 4px #ff5555; }
+.black { color: #ccc; }
+.green { color: #00ff7f; text-shadow: 0 0 6px #00ff99; }
+
+/* Contact */
+#contact {
+    background: none;
+    box-shadow: none;
+    border: none;
+    text-align: center;
+    margin-top: 30px;
+}
+
+#contact h2 {
+    color: #ff3b3b;
+    font-size: 1rem;
+    text-shadow: 0 0 8px #ff3333;
+}
+
+#contact a { color: #00ffff; text-decoration: none; }
+#contact a:hover { text-decoration: underline; }
+
+/* Copy notice */
+#copy-notice {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 255, 255, 0.2);
+    border: 1px solid #00ffff55;
+    color: #00ffff;
+    padding: 10px 20px;
+    font-size: 0.7rem;
+    border-radius: 6px;
+    text-shadow: 0 0 6px #00ffff;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* Footer */
+footer {
+    padding: 15px;
+    background-color: #000;
+    color: #777;
+    font-size: 0.6rem;
+    border-top: 1px solid #00ffff44;
+    text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .rules-container { flex-direction: column; align-items: center; }
+    .info-section { max-width: 90%; }
+    #warp-link { font-size: 2rem; }
+}
+</style>
+</head>
+
+<body>
+<h1 class="glow">Welcome to TEAM LBC</h1>
+
+<div id="highlight-banner">
+    <h2 id="warp-link" onclick="copyWorld()">LINK: LBCGENE1</h2>
+</div>
+
+<div class="rules-container">
+
+<!-- Hoster Rules -->
+<div class="info-section">
+<h2>Hoster Rules</h2>
+<p>
+> FB SPAM <
+
+30 group spam every access  
+Reset 6am/6pm ph time (no spam? Denda 5DLS)
+
+☢️☢️☢️ BEWARE NO WARNING ☢️☢️☢️  
+- Don't use hoster account to pay tax (DENDA 5DLS)  
+- Don't use hoster account to enter tax world (DENDA 3DLS)  
+- PROXY TRICK/TRICK (FORCE REFF AND DENDA 10DLS)  
+- PULL/BAN/KICK all (DENDA 5DLS)  
+- Auto Collect (DENDA 100DLS)  
+- Ban Player without reason (3DLS)  
+- Share Account (DENDA 20DLS + FORCE REFF)  
+- Fake tax/Over taxing (DENDA 10DLS)  
+- Host no modal (DENDA 10DLS)  
+- Promote other team (DENDA 10DLS + EATLEND)  
+- Unsent "CHATS" in our OFFCHAT GC (DENDA 50WLS PER UNSENT)  
+- Not Add Friend Owner of the world (DENDA 3DLS)  
+- For trolling and trashtalking players/co-hoster (DENDA 5DLS)  
+- No proof or screenshot of unaccess (DENDA 3DLS)  
+- Hosting without Record (DENDA 10DLS)  
+- Hosting exceed bet without permit (DENDA 10DLS)  
+- AUTO PULL (FIRST ATTEMPT WARNING // 2ND ATTEMPT 5DLS DENDA)  
+
+MAXHOLD: INTERNATIONAL RULES  
+
+MAX HOLD 50DLS MAX REF 50DLS  
+MAX HOLD 100DLS MAX REF 100DLS  
+ADMIN/INTI 300DLS MAX REF 300DLS
+</p>
+</div>
+
+<!-- Game Rules -->
+<div class="info-section">
+<h2>Game Rules</h2>
+<p>
+LEME RULES:  
+☢️ <span class="red">1</span>/<span class="black">10</span>/<span class="red">29</span> = x3.  
+☢️ <span class="green">0</span>/<span class="red">19</span>/<span class="black">28</span> = x4.  
+☢️ <span class="red">2</span>/<span class="black">11</span>/<span class="red">20</span>/<span class="black">9</span>/<span class="red">18</span>/<span class="black">27</span> = AUTOLOSE PLAYER.  
+☢️ TIE = AutoWin Hoster.  
+
+QEME RULES:  
+☢️ <span class="green">0</span> = <span class="red">9</span>.  
+☢️ <span class="red">1</span>/<span class="black">11</span>/<span class="red">21</span>/<span class="black">31</span> = AUTOLOSE PLAYER.  
+☢️ <span class="black">10</span>/<span class="red">20</span>/<span class="black">30</span> x3 WIN.  
+☢️ TIE = WIN HOSTER.  
+
+REME RULES:  
+☢️ <span class="green">0</span>/<span class="red">19</span>/<span class="black">28</span> = x3.  
+☢️ <span class="red">1</span>/<span class="black">10</span>/<span class="red">29</span> = AutoWin Hoster.  
+☢️ TIE = AutoWin Hoster.  
+
+QQ RULES:  
+☢️ Highest Number = <span class="green">0</span>/<span class="black">10</span>/<span class="green">20</span>/<span class="black">30</span>.  
+☢️ Lowest Number = <span class="red">1</span>.  
+☢️ Auto Go if Same bet.  
+
+CSN RULES:  
+☢️ <span class="green">0</span> is Highest.  
+☢️ Tie = RESPIN.  
+☢️ DOUBLE SPIN = -1 LIFE.  
+
+BJ RULES:  
+☢️ 21 GEMS = AUTOWIN.  
+☢️ 22 GEMS = AUTOLOSE (JEBS).  
+☢️ PLACING ANY BLOCK/WATER/FIRE = AUTOLOSE.  
+
+BTK RULES:  
+☢️ ARROZ IS ALLOWED.  
+☢️ ANCES IS ALLOWED.  
+☢️ The Higher Gems Will Win.  
+
+💎 GEMS VALUE:  
+💛 = 1  
+💙 = 5  
+❤️ = 10  
+💚 = 50  
+💜 = 100
+</p>
+</div>
+
+<!-- Original LBC -->
+<div class="info-section">
+<h2>Original LBC Game</h2>
+<p>
+A.) Financer system  
+1. FINANCER SYSTEM = NEED TO FIND FINANCER  
+2. FINANCER NEED TO BE TRUSTED CAUSE THE BET CAN X7  
+
+B.) HOSTER RULES  
+1. SPIN OFF LAMP = AUTO LOSE  
+2. SPIN SAME WHEEL = AUTO LOSE PLAYER  
+3. SPIN OTHER WHEEL = AUTO LOSE PLAYER  
+4. 3X SPIN = AUTO LOSE  
+5. 1 <span class="green">GREEN NUMBER</span> + <span class="black">BLACK NUMBER</span> (<span class="green">0</span> + <span class="black">BLACK NUMBER</span>) = 3X PLAYER SIDE  
+6. SAME NUMBER (BY PARTNER) = 4X  
+7. SAME FLAT <span class="green">0</span> DIGIT = 6X  
+8. AUTO WIN HOSTER  
+   a.) 1 <span class="green">GREEN FLAT 0</span> + NUMBER (ex. <span class="green">0</span> - <span class="red">19</span>)  
+   b.) NORMAL <span class="green">0</span> (ex. <span class="red">19</span> - <span class="red">29</span> => <span class="black">9</span>-<span class="black">9</span> = <span class="green">0</span>)  
+   c.) TIE (ex. <span class="red">19</span> - <span class="red">19</span>)  
+9. CAN TEAM (BUT PLAYER COMMAND "SAY FIRST IF 2SPINNER")  
+10. 3MINS DC = AUTO LOSE  
+11. WIN IS WIN (exclude nuked, bet in hoster account or display box)  
+12. PLAYER AND HOSTER NEED TO SPIN 2 WHEEL  
+17. <span class="green">0 GREEN</span> + <span class="red">RED NUMBER</span> = AUTO LOSE  
+
+Equivalent to auto lose:  
+Normal <span class="green">0</span> + <span class="red">9</span>  
+Green <span class="green">0</span> + <span class="red">RED number</span>  
+
+GAMEPLAY:  
+ALWAYS MINUS THE LAST NUMBER THE OUTCOME IS YOUR SCORE  
+HIGHEST IS <span class="green">0</span> AND LOWEST IS <span class="red">9</span> (GREEN <span class="green">0</span> IS NOT NORMAL <span class="green">0</span>)  
+
+NORMAL <span class="green">0</span> ex. <span class="red">19</span>-<span class="red">9</span> > <span class="red">9</span>-<span class="red">9</span> = <span class="green">0</span>  
+GREEN <span class="green">0</span> ex. = <span class="green">0</span> and <span class="black">BLACK NUMBER</span> = x3  
+</p>
+</div>
+</div>
+
+<div id="contact">
+<h2>Contact</h2>
+<p>Apply as Hoster at <a href="https://www.facebook.com/eugene.puwet#">Team LBC Owner</a></p>
+<p>Admin Assist:</p>
+<ul style="list-style:none; padding:0;">
+<li><a href="https://www.facebook.com/bradley.manalastas.56">LBC ASSIST</a></li>
+<li><a href="https://www.facebook.com/marlo.bunyad.31/">LBC ASSIST</a></li>
+</ul>
+</div>
+
+<footer>© since 2018 LBC REOPEN</footer>
+
+<div id="copy-notice">🌍 World "LBCGENE1" copied! Type /warp LBCGENE1 in Growtopia</div>
+
+<script>
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.onkeydown = e => {
+if (e.key === "F12" || (e.ctrlKey && e.shiftKey && ["I","J"].includes(e.key)) || (e.ctrlKey && e.key === "U")) {
+    e.preventDefault(); return false;
+}};
+function copyWorld() {
+const world = "LBCGENE1";
+navigator.clipboard.writeText(world);
+const notice = document.getElementById('copy-notice');
+notice.style.opacity = "1";
+setTimeout(()=>{notice.style.opacity="0";},2000);
+}
+</script>
+</body>
+</html>
