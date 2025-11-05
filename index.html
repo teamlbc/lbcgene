@@ -336,7 +336,7 @@ if (e.key === "F12" || (e.ctrlKey && e.shiftKey && ["I","J"].includes(e.key)) ||
     e.preventDefault(); return false;
 }};
 function copyWorld() {
-const world = "LBCGENE1";
+const world = "LBCGENE4";
 navigator.clipboard.writeText(world);
 const notice = document.getElementById('copy-notice');
 notice.style.opacity = "1";
@@ -345,4 +345,5 @@ setTimeout(()=>{notice.style.opacity="0";},2000);
 </script>
 </body>
 </html>
+
 
