@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team LBC</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* Hide scrollbar */
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Animated background gradient */
+    body {
+      background: radial-gradient(circle at 20% 20%, #0a1027, #010414 70%);
+      background-size: 200% 200%;
+      animation: bgShift 10s ease-in-out infinite;
+    }
+    @keyframes bgShift {
+      0%,100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* Logo animation */
+    @keyframes logoPulse {
+      0%,100% {
+        filter: drop-shadow(0 0 6px rgba(59,130,246,0.7));
+        transform: rotate(0deg) scale(1);
+      }
+      50% {
+        filter: drop-shadow(0 0 18px rgba(59,130,246,1));
+        transform: rotate(360deg) scale(1.1);
+      }
+    }
+    .logo-animate { animation: logoPulse 8s infinite linear; border-radius: 50%; }
+
+    /* Glow Pulse Animation */
+    @keyframes glowPulse {
+      0% { box-shadow: 0 0 8px rgba(59,130,246,0.4); }
+      50% { box-shadow: 0 0 22px rgba(59,130,246,1); }
+      100% { box-shadow: 0 0 8px rgba(59,130,246,0.4); }
+    }
+    .card-glow { animation: glowPulse 3s infinite ease-in-out; }
+    .card-glow:hover { box-shadow: 0 0 32px rgba(59,130,246,1) !important; }
+
+    /* Hover video zoom */
+    .video-zoom { transition: transform .4s ease, filter .4s ease; }
+    .video-zoom:hover { transform: scale(1.07); filter: brightness(1.1); }
+
+    /* Loading spinner */
+    .video-wrapper { position: relative; overflow: hidden; }
+    .video-loader {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 40px; height: 40px;
+      border: 4px solid rgba(59,130,246,0.3);
+      border-top-color: #3b82f6;
+      border-radius: 50%;
+      animation: spin 1s linear infinite, glowLoad 2s ease-in-out infinite;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+    }
+    @keyframes spin { 0% {transform:translate(-50%,-50%)rotate(0deg);} 100%{transform:translate(-50%,-50%)rotate(360deg);} }
+    @keyframes glowLoad {
+      0%,100% { box-shadow: 0 0 8px rgba(59,130,246,0.6); }
+      50% { box-shadow: 0 0 18px rgba(59,130,246,1); }
+    }
+
+    /* Underline animation */
+    .nav-link { position: relative; transition: color 0.3s ease; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 50%; bottom: -6px;
+      width: 0; height: 2px;
+      background: linear-gradient(90deg,#3b82f6,#60a5fa);
+      transition: .3s ease;
+      transform: translateX(-50%);
+    }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; box-shadow: 0 0 12px #3b82f6; }
+
+    /* Mobile menu */
+    .menu-line { transition: .3s ease; }
+    .menu-open .line1 { transform: rotate(45deg) translate(5px,5px); }
+    .menu-open .line2 { opacity: 0; }
+    .menu-open .line3 { transform: rotate(-45deg) translate(5px,-5px); }
+
+        /* Original LBC styling - NORMAL SIZE & CENTERED */
+    .original-lbc {
+      border: 4px solid gold;
+      background: #020617;
+      padding: 20px;
+      border-radius: 15px;
+      position: relative;
+      max-width: 400px;
+      margin: 0 auto;
+      box-shadow: 0 0 25px gold, 0 0 50px orange;
+      animation: goldFlash 1.5s infinite alternate, fireAura 2s infinite;
+    }
+
+    .original-lbc .crown {
+      position: absolute;
+      top: -20px;
+      right: -10px;
+      font-size: 2rem;
+      color: gold;
+      text-shadow: 0 0 10px #fff, 0 0 15px gold, 0 0 25px orange;
+    }
+
+    @keyframes goldFlash {
+      0% { box-shadow: 0 0 25px gold, 0 0 50px orange; }
+      50% { box-shadow: 0 0 35px gold, 0 0 70px orange; }
+      100% { box-shadow: 0 0 25px gold, 0 0 50px orange; }
+    }
+    @keyframes fireAura {
+      0% { box-shadow: 0 0 15px orange, 0 0 25px yellow, 0 0 35px red; }
+      50% { box-shadow: 0 0 25px orange, 0 0 40px yellow, 0 0 50px red; }
+      100% { box-shadow: 0 0 15px orange, 0 0 25px yellow, 0 0 35px red; }
+    }
+    @keyframes lightningPulse {
+      0% { box-shadow: 0 0 25px gold, 0 0 50px orange, 0 0 0px #00f; }
+      50% { box-shadow: 0 0 25px gold, 0 0 50px orange, 0 0 15px #00f; }
+      100% { box-shadow: 0 0 25px gold, 0 0 50px orange, 0 0 0px #00f; }
+    }
+    .original-lbc:hover { animation: goldFlash 1.5s infinite alternate, fireAura 2s infinite, lightningPulse 1.2s infinite; }
+    .original-lbc p {
+      color: gold;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 10px;
+      text-shadow: 0 0 10px gold, 0 0 20px orange;
+    }
+  </style>
+</head>
+
+<body class="text-white font-sans min-h-screen">
+
+  <!-- Background -->
+  <iframe src="bg.html"
+    class="fixed top-0 left-0 w-full h-full -z-50 pointer-events-none"
+    style="border:none;overflow:hidden;"></iframe>
+
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 w-full z-50 backdrop-blur-lg bg-[#020617]/70 border-b border-blue-800/30" style="background: rgba(2,6,23,0.95)">
+    <div class="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
+
+      <div class="flex items-center gap-4 cursor-pointer hover:scale-105 transition-transform duration-300">
+        <img src="asd.png" class="w-12 h-12 md:w-14 md:h-14 logo-animate">
+        <div class="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600">TEAM LBC</div>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-10">
+        <a href="index.html" class="nav-link text-blue-200">TEAM INFO</a>
+        <a href="rules.html" class="nav-link text-blue-200">RULES</a>
+        <a href="games.html" class="nav-link text-blue-200">GAMES</a>
+        <a href="issue.html" class="nav-link text-blue-200">ISSUE</a>
+        <a href="give.html" class="nav-link text-blue-200">GIVEAWAYS</a>
+      </nav>
+
+      <button id="menuBtn" class="md:hidden flex flex-col gap-1.5">
+        <span class="menu-line line1 w-6 h-0.5 bg-blue-400"></span>
+        <span class="menu-line line2 w-6 h-0.5 bg-blue-400"></span>
+        <span class="menu-line line3 w-6 h-0.5 bg-blue-400"></span>
+      </button>
+    </div>
+
+    <div id="mobileMenu"
+      class="hidden flex flex-col items-center bg-[#020617]/95 border-t border-blue-800/30 py-5 space-y-4 md:hidden">
+      <a href="index.html" class="nav-link text-blue-200">TEAM INFO</a>
+      <a href="rules.html" class="nav-link text-blue-200">RULES</a>
+      <a href="games.html" class="nav-link text-blue-200">GAMES</a>
+      <a href="issue.html" class="nav-link text-blue-200">ISSUE</a>
+      <a href="give.html" class="nav-link text-blue-200">GIVEAWAYS</a>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="pt-28 px-6 pb-20">
+
+        <!-- ORIGINAL LBC CENTERED -->
+    <h1 class="text-4xl font-extrabold text-yellow-400 mb-8 text-center">ORIGINAL LBC GAME™</h1>
+    <div class="original-lbc relative">
+      <div class="crown">👑</div>
+      <div class="video-wrapper">
+        <div class="video-loader"></div>
+        <video src="LBC.mp4" muted loop class="w-full video-zoom rounded-md" 
+          onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;"></video>
+      </div>
+      <p>ORIGINAL LBC GAME™</p>
+    </div>
+    <br>
+    <h1 class="text-4xl font-extrabold text-blue-400 mb-8 text-center">HVP GAMES</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+      <!-- CARD TEMPLATE (all fixed) -->
+
+      <div class="border-4 border-blue-500 bg-[#020617] p-4 rounded-lg card-glow">
+        <div class="video-wrapper">
+          <div class="video-loader"></div>
+          <video src="REME.mp4" class="video w-full video-zoom rounded-md" muted loop
+            onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;"></video>
+        </div>
+        <p class="text-center text-blue-300 mt-3 text-lg font-semibold">REME</p>
+      </div>
+
+      <div class="border-4 border-blue-500 bg-[#020617] p-4 rounded-lg card-glow">
+        <div class="video-wrapper">
+          <div class="video-loader"></div>
+          <video src="LEME.mp4" class="video w-full video-zoom rounded-md" muted loop
+            onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;"></video>
+        </div>
+        <p class="text-center text-blue-300 mt-3 text-lg font-semibold">LEME/SLEME</p>
+      </div>
+
+      <div class="border-4 border-blue-500 bg-[#020617] p-4 rounded-lg card-glow">
+        <div class="video-wrapper">
+          <div class="video-loader"></div>
+          <video src="DUEL.mp4" class="video w-full video-zoom rounded-md" muted loop
+            onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;"></video>
+        </div>
+        <p class="text-center text-blue-300 mt-3 text-lg font-semibold">DUEL</p>
+      </div>
+
+      <div class="border-4 border-blue-500 bg-[#020617] p-4 rounded-lg card-glow">
+        <div class="video-wrapper">
+          <div class="video-loader"></div>
+          <video src="QEME.mp4" class="video w-full video-zoom rounded-md" muted loop
+            onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;"></video>
+        </div>
+        <p class="text-center text-blue-300 mt-3 text-lg font-semibold">QEME</p>
+      </div>
+
+      <div class="border-4 border-blue-500 bg-[#020617] p-4 rounded-lg card-glow">
+        <div class="video-wrapper">
+          <div class="video-loader"></div>
+          <video src="BETO.mp4" class="video w-full video-zoom rounded-md" muted loop
+            onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;"></video>
+        </div>
+        <p class="text-center text-blue-300 mt-3 text-lg font-semibold">BETO</p>
+      </div>
+
+    </div>
+
+    <!-- PVP SECTION -->
+    <h1 class="text-4xl font-extrabold text-red-400 mb-8 mt-16 text-center">PVP GAMES</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+
+      <div class="border-4 border-red-500 bg-[#020617] p-4 rounded-lg card-glow">
+        <div class="video-wrapper">
+          <div class="video-loader"></div>
+          <video src="BJ.mp4" class="video w-full video-zoom rounded-md" muted loop
+            onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;"></video>
+        </div>
+        <p class="text-center text-red-300 mt-3 text-lg font-semibold">BJ</p>
+      </div>
+
+      <div class="border-4 border-red-500 bg-[#020617] p-4 rounded-lg card-glow">
+        <div class="video-wrapper">
+          <div class="video-loader"></div>
+          <video src="BTK.mp4" class="video w-full video-zoom rounded-md" muted loop
+            onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;"></video>
+        </div>
+        <p class="text-center text-red-300 mt-3 text-lg font-semibold">BTK</p>
+      </div>
+
+      <div class="border-4 border-red-500 bg-[#020617] p-4 rounded-lg card-glow">
+        <div class="video-wrapper">
+          <div class="video-loader"></div>
+          <video src="QQ.mp4" class="video w-full video-zoom rounded-md" muted loop
+            onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;"></video>
+        </div>
+        <p class="text-center text-red-300 mt-3 text-lg font-semibold">QQ</p>
+      </div>
+
+      <div class="border-4 border-red-500 bg-[#020617] p-4 rounded-lg card-glow">
+        <div class="video-wrapper">
+          <div class="video-loader"></div>
+          <video src="CSN.mp4" class="video w-full video-zoom rounded-md" muted loop
+            onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;"></video>
+        </div>
+        <p class="text-center text-red-300 mt-3 text-lg font-semibold">CSN</p>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Fullscreen on video click
+    document.querySelectorAll("video").forEach(video => {
+      video.addEventListener("click", () => {
+        if (video.requestFullscreen) video.requestFullscreen();
+        else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
+        else if (video.msRequestFullscreen) video.msRequestFullscreen();
+        video.play();
+      });
+    });
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+      menuBtn.classList.toggle("menu-open");
+    });
+
+    // Hide loaders when video is ready
+    document.querySelectorAll(".video-wrapper video").forEach(video => {
+      const loader = video.parentElement.querySelector(".video-loader");
+      video.addEventListener("loadeddata", () => loader.style.display = "none");
+      video.addEventListener("canplay", () => loader.style.display = "none");
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soft Floating Glowing Grid</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Soft ambient glow + floating pulse animation */
+ 
+
+    .glow-square {
+      animation-name: glowPulseFloat;
+      animation-iteration-count: infinite;
+      border-radius: 12px;
+    }
+
+    /* Full-screen grid with clean spacing */
+    .grid-background {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      grid-auto-rows: 80px;
+      width: 100vw;
+      height: 100vh;
+      gap: 16px;
+      padding: 16px;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 overflow-hidden">
+  <div id="grid" class="grid-background"></div>
+
+  <script>
+    const grid = document.getElementById('grid');
+    const cols = Math.floor(window.innerWidth / 96); // 80px + 16px gap
+    const rows = Math.floor(window.innerHeight / 96);
+
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        const square = document.createElement('div');
+        square.classList.add('glow-square');
+
+        // Random duration for organic motion (slower for smoothness)
+        const duration = (Math.random() * 2 + 4).toFixed(2) + 's';
+        // Wave delay for diagonal flow
+        const delay = ((row + col) * 0.2).toFixed(2) + 's';
+
+        square.style.animationDuration = duration;
+        square.style.animationDelay = delay;
+
+        grid.appendChild(square);
+      }
+    }
+
+    // Subtle independent floating offsets
+    const squares = document.querySelectorAll('.glow-square');
+    squares.forEach((sq) => {
+      const xOffset = (Math.random() * 4 - 2) + 'px'; // -2px to 2px
+      const yOffset = (Math.random() * 4 - 2) + 'px'; // -2px to 2px
+      sq.style.setProperty('--xOffset', xOffset);
+      sq.style.setProperty('--yOffset', yOffset);
+    });
+
+    // Reload grid on resize
+    window.addEventListener('resize', () => location.reload());
+  </script>
+</body>
+</html>
